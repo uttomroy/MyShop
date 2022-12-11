@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MyShop.WebApi/1.0.0": {
+        "runtime": {
+          "MyShop.WebApi.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyShop.WebApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

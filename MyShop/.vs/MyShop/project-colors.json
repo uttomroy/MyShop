@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "78ceb918-c21c-4e50-9377-60a014f487cf": {
+      "ProjectGuid": "78ceb918-c21c-4e50-9377-60a014f487cf",
+      "DisplayName": "MyShop.WebApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
