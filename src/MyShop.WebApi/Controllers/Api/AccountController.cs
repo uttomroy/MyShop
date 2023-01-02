@@ -7,6 +7,9 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using MyShop.Core.Attributes;
+using MyShop.Core.Services.TokenHandler;
+using TokenHandler = MyShop.Core.Services.TokenHandler.TokenHandlerService;
 
 namespace MyShop.WebApi.Controllers
 {
@@ -15,49 +18,29 @@ namespace MyShop.WebApi.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-
-        public AccountController(IConfiguration configuration)
+        private readonly ITokenHandlerService _tokenHandler;
+        public AccountController(IConfiguration configuration, ITokenHandlerService tokenHandler)
         {
             _configuration = configuration;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpGet("Get")]
-        [Authorize(Roles = "Admin")]
+        [PermissionAuthorize]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Get()
         {
-            return Ok("I am okaly");
+            var result = true;
+            return Ok(result);
         }
 
         [HttpPost("Login")]
-        public IActionResult Login(User user)
+        public async Task<IActionResult> Login(User user)
         {
-            var issuer = _configuration.GetValue<string>("Jwt:Issuer");
-            var audience = _configuration.GetValue<string>("Jwt:Audience");
-            var key = Encoding.ASCII.GetBytes
-                (_configuration.GetValue<string>("Jwt:Key"));
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim("Id", Guid.NewGuid().ToString()),
-                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Email, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti,
-                        Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.Role, "Admin")
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(5),
-                Issuer = issuer,
-                Audience = audience,
-                SigningCredentials = new SigningCredentials
-                (new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha512Signature)
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var jwtToken = tokenHandler.WriteToken(token);
-            var stringToken = tokenHandler.WriteToken(token);
-            return Ok(stringToken);
+            var token = await _tokenHandler.GetToken();
+            HttpContext.Response.Cookies.Append("token", token.JWT, new CookieOptions(){ HttpOnly = true, MaxAge = new TimeSpan(365, 0, 0, 0) });
+            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions() { HttpOnly = true, MaxAge = new TimeSpan(365, 0, 0, 0) });
+            return Ok();
         }
     }
 }
