@@ -1,6 +1,4 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using MyShop.Core.Middleware;
 using MyShop.Core.Models.Configs;
 using MyShop.Core.Services.TokenHandler;
 using TokenHandlerService = MyShop.Core.Services.TokenHandler.TokenHandlerService;
@@ -38,6 +36,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+app.UseMiddleware<AuthenticationMiddleware>();
 
 app.MapControllerRoute( 
     name: "default",
