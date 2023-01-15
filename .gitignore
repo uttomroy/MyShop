@@ -2,4 +2,4 @@ src/MyShop.Core/obj/*
 src/MyShop.Core/bin/*
 src/MyShop.WebApi/bin/*
 src/MyShop.WebApi/obj/*
-src/MyShop.WebApi/wwwroot/static/
+src/MyShop.WebApi/wwwroot/*
