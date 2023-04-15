@@ -5,10 +5,10 @@ import SchoolIcon from '@mui/icons-material/School';
 
 const Header = () => {
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'white' }} >
+        <AppBar position="static" sx={{ background: '#063970' }} >
             <Toolbar>
-                <SchoolIcon color='primary' />
-                <Typography sx={{color: '#1976d2'}} ml={2}>
+                <SchoolIcon />
+                <Typography ml={2}>
                     Management System
                 </Typography>
                 <Stack direction={'row'} sx={{marginLeft: 'auto'}} spacing={2}>
