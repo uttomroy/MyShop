@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyShop.WebApi.Models;
 using System.Diagnostics;
+using MyShop.Core.Models;
 
 namespace MyShop.WebApi.Controllers
 {
@@ -15,6 +16,7 @@ namespace MyShop.WebApi.Controllers
 
         public IActionResult Index()
         {
+            var ss = new Token();
             return View();
         }
 

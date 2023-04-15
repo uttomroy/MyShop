@@ -1,0 +1,32 @@
+e916e893-9554-4c9a-a62a-b7b356c1adcf
+
+coursier.ResolutionException: Encountered 1 error(s) in dependency resolution:
+[error]     org.scala-sbt:global-plugins;sbtVersion=1.0;scalaVersion=2.12:0.0:
+[error]         not found:
+[error]             https://repo1.maven.org/maven2/org/scala-sbt/global-plugins_2.12_1.0/0.0/global-plugins-0.0.pom
+[error]             C:\Users\pkarmaker\.ivy2\local\org.scala-sbt\global-plugins\scala_2.12\sbt_1.0\0.0\ivys\ivy.xml
+[error]             https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scala-sbt/global-plugins/scala_2.12/sbt_1.0/0.0/ivys/ivy.xml
+[error] (coursierResolutions) coursier.ResolutionException: Encountered 1 error(s) in dependency resolution:
+[error]     org.scala-sbt:global-plugins;sbtVersion=1.0;scalaVersion=2.12:0.0:
+[error]         not found:
+[error]             https://repo1.maven.org/maven2/org/scala-sbt/global-plugins_2.12_1.0/0.0/global-plugins-0.0.pom
+[error]             C:\Users\pkarmaker\.ivy2\local\org.scala-sbt\global-plugins\scala_2.12\sbt_1.0\0.0\ivys\ivy.xml
+[error]             https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scala-sbt/global-plugins/scala_2.12/sbt_1.0/0.0/ivys/ivy.xml
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: '
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'O'
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'B'
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: '
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'O'
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'B'
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: '
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'O'
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+Invalid response: 'B'
