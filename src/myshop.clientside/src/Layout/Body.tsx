@@ -1,13 +1,14 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import Login from '../Components/Login';
+import {Routes, Route } from 'react-router-dom';
 
 const Body = () => {
     return (
         <Container component="main" sx={{ flexGrow: 1, mt: 2 }}>
-            {/* Body content goes here */}
-            <Typography variant="h4" component="h1" align="center">
-                Body Content
-            </Typography>
+            <Routes>
+                <Route path='/Login' element={<Login />} />
+                <Route path='/' element={<div>Home Page</div>} />
+            </Routes>
         </Container>
     );
 };

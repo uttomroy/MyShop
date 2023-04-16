@@ -12,7 +12,7 @@ const Header = () => {
                     Management System
                 </Typography>
                 <Stack direction={'row'} sx={{marginLeft: 'auto'}} spacing={2}>
-                    <Button variant="contained" >Login</Button>
+                    <Button href='/Login' variant="contained" >Login</Button>
                     <Button variant="contained" >Signup</Button>
                 </Stack>
 

@@ -1,14 +1,74 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import React, { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import { Box, 
+    Button, 
+    Checkbox, 
+    FormControlLabel, 
+    IconButton, 
+    InputAdornment, 
+    Link, 
+    Stack } from '@mui/material';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
-        <Container component="main" sx={{ flexGrow: 1, mt: 2 }}>
-            {/* Body content goes here */}
-            <Typography variant="h4" component="h1" align="center">
-                Body Content
-            </Typography>
-        </Container>
+        <Box sx={{ maxWidth: '350px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <TextField
+                    fullWidth
+                    autoComplete="username"
+                    type="email"
+                    label="Email Address"
+                />
+                <TextField
+                    fullWidth
+                    autoComplete="current-password"
+                    type={showPassword ? "text" : "password"}
+                    label="Password"
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                >
+                                    {showPassword ? (
+                                        <RemoveRedEyeIcon />
+                                    ) : (
+                                        <VisibilityOffIcon />
+                                    )}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            </Box>
+            <Box>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    sx={{ my: 2 }}
+                >
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={true}
+                            />
+                        }
+                        label="Remember me"
+                    />
+
+                    <Link href="#" underline="hover">
+                        Forgot password?
+                    </Link>
+                </Stack>
+            </Box>
+            <Button fullWidth variant="contained">Submit</Button>
+        </Box>
     );
 };
 
