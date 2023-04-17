@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import { Box, 
-    Button, 
-    Checkbox, 
-    FormControlLabel, 
-    IconButton, 
-    InputAdornment, 
-    Link, 
-    Stack } from '@mui/material';
+import {
+    Avatar,
+    Box,
+    Button,
+    Checkbox,
+    FormControlLabel,
+    IconButton,
+    InputAdornment,
+    Link,
+    Stack
+} from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <Box sx={{ maxWidth: '350px' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+        <Box sx={{margin: 'auto', alignItems: 'center', display: 'flex',
+        flexDirection: 'column' }}>
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <LockOutlinedIcon />
+            </Avatar>
+            <Box sx={{ width: '350px', display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <TextField
                     fullWidth
                     autoComplete="username"
@@ -45,13 +53,10 @@ const Login = () => {
                         ),
                     }}
                 />
-            </Box>
-            <Box>
                 <Stack
                     direction="row"
                     alignItems="center"
                     justifyContent="space-between"
-                    sx={{ my: 2 }}
                 >
                     <FormControlLabel
                         control={
@@ -61,13 +66,12 @@ const Login = () => {
                         }
                         label="Remember me"
                     />
-
                     <Link href="#" underline="hover">
                         Forgot password?
                     </Link>
                 </Stack>
+                <Button fullWidth variant="contained">LogIn</Button>
             </Box>
-            <Button fullWidth variant="contained">Submit</Button>
         </Box>
     );
 };
