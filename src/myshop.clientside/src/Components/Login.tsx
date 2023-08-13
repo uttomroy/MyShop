@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import {
     Avatar,
@@ -14,14 +14,28 @@ import {
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import axios from 'axios';
+import config from '../Config/config';
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
+    useEffect(() => {
+        axios.post(config.baseUrl + '/api/Account/Get')
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, [])
+
     return (
-        <Box sx={{margin: 'auto', alignItems: 'center', display: 'flex',
-        flexDirection: 'column' }}>
+        <Box sx={{
+            margin: 'auto', alignItems: 'center', display: 'flex',
+            flexDirection: 'column'
+        }}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                 <LockOutlinedIcon />
             </Avatar>
