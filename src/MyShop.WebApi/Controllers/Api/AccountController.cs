@@ -25,9 +25,7 @@ namespace MyShop.WebApi.Controllers
             _tokenHandler = tokenHandler;
         }
 
-        [HttpGet("Get")]
-        [PermissionAuthorize]
-        //[Authorize(Roles = "Admin")]
+        [HttpPost("Get")]
         public IActionResult Get()
         {
             var result = true;

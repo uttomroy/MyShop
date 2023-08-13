@@ -5,16 +5,6 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const Body = () => {
-    
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/account/Get')
-          .then(response => {
-            console.log(response)
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
 
     return (
         <Container component="main" sx={{ flexGrow: 1, mt: 2 }}>
