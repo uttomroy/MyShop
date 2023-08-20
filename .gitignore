@@ -3,3 +3,6 @@ src/MyShop.Core/bin/*
 src/MyShop.WebApi/bin/*
 src/MyShop.WebApi/obj/*
 src/MyShop.WebApi/wwwroot/*
+src/.idea/*
+src/.vs/*
+
