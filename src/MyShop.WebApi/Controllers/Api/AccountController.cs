@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using MyShop.Core.Attributes;
 using MyShop.Core.Services.TokenHandler;
 using TokenHandler = MyShop.Core.Services.TokenHandler.TokenHandlerService;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MyShop.WebApi.Controllers
 {
@@ -26,6 +27,7 @@ namespace MyShop.WebApi.Controllers
         }
 
         [HttpPost("Get")]
+        [SwaggerOperation(OperationId = "test")]
         public IActionResult Get()
         {
             var result = true;
@@ -33,6 +35,7 @@ namespace MyShop.WebApi.Controllers
         }
 
         [HttpPost("Login")]
+        //[SwaggerOperation(OperationId = "BookingLayout")]
         public async Task<IActionResult> Login(User user)
         {
             var token = await _tokenHandler.GetToken();

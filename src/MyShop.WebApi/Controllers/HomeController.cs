@@ -5,6 +5,8 @@ using MyShop.Core.Models;
 
 namespace MyShop.WebApi.Controllers
 {
+    [Route("/{*suffix}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,17 +20,6 @@ namespace MyShop.WebApi.Controllers
         {
             var ss = new Token();
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
