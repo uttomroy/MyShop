@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+ var configuration = new ConfigurationBuilder()
+    .AddEnvironmentVariables()
+    .Build();
 
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<JWTConfig>(builder.Configuration.GetSection(JWTConfig.Name));
@@ -37,7 +40,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-//app.UseMiddleware<AuthenticationMiddleware>();
+app.UseMiddleware<AuthenticationMiddleware>();
 
 app.MapControllerRoute( 
     name: "default",
