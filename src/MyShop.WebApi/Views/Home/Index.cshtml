@@ -1,4 +1,5 @@
 ﻿@using System.Text.Json
+@model MyShop.Core.Models.IndexModel;
 @{
     Layout = null;
 }
@@ -12,8 +13,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="/manifest.json" />
-    <script defer="defer" src="/static/js/main.87c44a4f.js"></script>
-    <link href="/static/css/main.073c9b0a.css" rel="stylesheet">
+    <script defer="defer" type="text/javascript" src="@Model.Asset.Files.MainJs"></script>
+    <link href="@Model.Asset.Files.MainCss" rel="stylesheet"/>
 </head>
 <body>
     <div id="root">

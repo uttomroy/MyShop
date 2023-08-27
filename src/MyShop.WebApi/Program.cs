@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using MyShop.Core.Models.Configs;
+using MyShop.Core.Services.FileService;
 using MyShop.Core.Services.TokenHandler;
 using Swashbuckle.Extensions;
 using TokenHandlerService = MyShop.Core.Services.TokenHandler.TokenHandlerService;
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.Configure<JWTConfig>(builder.Configuration.GetSection(JWTConfig.Name));
 builder.Services.AddSingleton<ITokenHandlerService, TokenHandlerService>();
+builder.Services.AddSingleton<IIndexFileService, IndexFileService>();
 
 var app = builder.Build();
 
