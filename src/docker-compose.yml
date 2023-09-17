@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  myshop.webapi:
+    image: ${DOCKER_REGISTRY-}myshopwebapi
+    build:
+      context: .
+      dockerfile: MyShop.WebApi/Dockerfile
+    depends_on: [sql-server-db]
+
+  sql-server-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: "Pradip123_$"
+      ACCEPT_EULA: "Y"

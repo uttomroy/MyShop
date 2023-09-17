@@ -5,7 +5,11 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyShop.WebApi", "MyShop.WebApi\MyShop.WebApi.csproj", "{9FB34116-B84D-4478-94AC-715E65504900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShop.Core", "MyShop.Core\MyShop.Core.csproj", "{E6C70D6C-382D-48AE-A8B6-742A3C0FA215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyShop.Core", "MyShop.Core\MyShop.Core.csproj", "{E6C70D6C-382D-48AE-A8B6-742A3C0FA215}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyShop.Database", "MyShop.Database\MyShop.Database.csproj", "{BEF75B8A-C7FF-4E0B-AC73-7D7365C9245B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E9077F91-BC67-47B7-9189-3C980FB94DEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{E6C70D6C-382D-48AE-A8B6-742A3C0FA215}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6C70D6C-382D-48AE-A8B6-742A3C0FA215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6C70D6C-382D-48AE-A8B6-742A3C0FA215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF75B8A-C7FF-4E0B-AC73-7D7365C9245B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF75B8A-C7FF-4E0B-AC73-7D7365C9245B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF75B8A-C7FF-4E0B-AC73-7D7365C9245B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF75B8A-C7FF-4E0B-AC73-7D7365C9245B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9077F91-BC67-47B7-9189-3C980FB94DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9077F91-BC67-47B7-9189-3C980FB94DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9077F91-BC67-47B7-9189-3C980FB94DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9077F91-BC67-47B7-9189-3C980FB94DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

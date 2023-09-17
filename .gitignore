@@ -6,3 +6,6 @@ src/MyShop.WebApi/wwwroot/*
 src/.idea/*
 src/.vs/*
 
+/src/obj
+/src/bin/Debug
+/src/MyShop.Database/obj
