@@ -10,3 +10,4 @@ src/.vs/*
 /src/bin/Debug
 /src/MyShop.Database/obj
 /src/MyShop.Database/bin/Debug/net6.0
+/src/MyShop.Database/bin/Debug/net7.0

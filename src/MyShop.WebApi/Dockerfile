@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 5034
 
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["MyShop.WebApi/MyShop.WebApi.csproj", "./MyShop.WebApi/"]
 COPY ["MyShop.Core/MyShop.Core.csproj", "./MyShop.Core/"]
