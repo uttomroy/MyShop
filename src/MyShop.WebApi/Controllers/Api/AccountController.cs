@@ -7,8 +7,10 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MyShop.Core.Attributes;
 using MyShop.Core.Services.TokenHandler;
+using MyShop.Database.Data;
 using TokenHandler = MyShop.Core.Services.TokenHandler.TokenHandlerService;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -20,16 +22,20 @@ namespace MyShop.WebApi.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ITokenHandlerService _tokenHandler;
-        public AccountController(IConfiguration configuration, ITokenHandlerService tokenHandler)
+        private readonly MyShopDbContext _myShopDbContext;
+        public AccountController(IConfiguration configuration, ITokenHandlerService tokenHandler,
+            MyShopDbContext dbContext)
         {
             _configuration = configuration;
             _tokenHandler = tokenHandler;
+            _myShopDbContext = dbContext;
         }
 
         [HttpPost("Get")]
         [SwaggerOperation(OperationId = "test")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
+            var lst = await _myShopDbContext.Organization.ToListAsync();
             var result = true;
             return Ok(result);
         }

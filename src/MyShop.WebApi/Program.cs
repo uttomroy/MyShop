@@ -1,7 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using MyShop.Core.Models.Configs;
 using MyShop.Core.Services.FileService;
 using MyShop.Core.Services.TokenHandler;
+using MyShop.Database.Data;
 using Swashbuckle.Extensions;
 using TokenHandlerService = MyShop.Core.Services.TokenHandler.TokenHandlerService;
 
@@ -24,6 +26,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<JWTConfig>(builder.Configuration.GetSection(JWTConfig.Name));
 builder.Services.AddSingleton<ITokenHandlerService, TokenHandlerService>();
 builder.Services.AddSingleton<IIndexFileService, IndexFileService>();
+builder.Services.AddDbContext<MyShopDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyShopDbConnection"));
+});
 
 var app = builder.Build();
 

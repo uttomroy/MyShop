@@ -9,3 +9,4 @@ src/.vs/*
 /src/obj
 /src/bin/Debug
 /src/MyShop.Database/obj
+/src/MyShop.Database/bin/Debug/net6.0

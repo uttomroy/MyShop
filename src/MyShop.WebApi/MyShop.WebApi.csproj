@@ -23,14 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="test.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <ProjectReference Include="..\MyShop.Database\MyShop.Database.csproj" />
   </ItemGroup>
 
 </Project>
