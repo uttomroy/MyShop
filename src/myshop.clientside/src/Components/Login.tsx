@@ -16,19 +16,21 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import axios from 'axios';
 import config from '../Config/config';
+import { healthCheckApi } from '../api/controller';
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
-        axios.post(config.baseUrl + '/api/Account/Get')
+        axios.post('/api/Account/Get')
             .then(response => {
                 console.log(response)
             })
             .catch(error => {
                 console.error(error);
             });
+        healthCheckApi.index()
     }, [])
 
     return (

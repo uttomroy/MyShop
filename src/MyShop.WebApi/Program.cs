@@ -53,10 +53,9 @@ if (app.Environment.IsDevelopment())
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "my-shop");
             c.RoutePrefix = "swagger";
         });
-    app.UseCors(options => options.AllowAnyOrigin());
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

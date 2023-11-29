@@ -35,9 +35,9 @@ namespace MyShop.WebApi.Controllers
         [SwaggerOperation(OperationId = "test")]
         public async Task<IActionResult> Get()
         {
-            var lst = await _myShopDbContext.Organization.ToListAsync();
-            var result = true;
-            return Ok(result);
+            //var lst = await _myShopDbContext.Organization.ToListAsync();
+            //var result = true;
+            return Ok("");
         }
 
         [HttpPost("Login")]
