@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
@@ -19,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\MyShop.Core\MyShop.Core.csproj" />
-    <ProjectReference Include="..\src\MyShop.Database\MyShop.Database.csproj" />
-    <ProjectReference Include="..\src\MyShop.WebApi\MyShop.WebApi.csproj" />
+    <ProjectReference Include="..\MyShop.WebApi\MyShop.WebApi.csproj" />
   </ItemGroup>
 
 </Project>

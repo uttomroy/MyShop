@@ -17,3 +17,7 @@ src/.vs/*
 /MyShop.UnitTest/obj
 /MyShop.IntegrationTest/bin/Debug/net8.0
 /MyShop.IntegrationTest/obj
+/src/MyShop.IntegrationTest/bin/Debug/net8.0
+/src/MyShop.UnitTest/bin/Debug/net8.0
+/src/MyShop.UnitTest/obj
+/src/MyShop.IntegrationTest/obj
