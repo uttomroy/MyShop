@@ -15,7 +15,6 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import axios from 'axios';
-import config from '../Config/config';
 import { healthCheckApi } from '../api/controller';
 
 

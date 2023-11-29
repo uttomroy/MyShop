@@ -26,8 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "cross-env BUILD_PATH='../MyShop.WebApi/wwwroot/' react-scripts build",
+    "start": "craco start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "gen-client": "openapi-generator-cli generate -i http://localhost:5000/swagger/v1/swagger.json -g typescript-axios -o src/api/generated --additional-properties=disallowAdditionalPropertiesIfNotPresent=false,supportsES6=true,typescriptThreePlus=true --enable-post-process-file --remove-operation-id-prefix"
@@ -50,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0"
   }
 }
