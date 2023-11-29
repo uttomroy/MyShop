@@ -1,8 +1,6 @@
 import Container from '@mui/material/Container';
 import Login from '../Components/Login';
 import {Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
-import axios from 'axios';
 
 const Body = () => {
 
