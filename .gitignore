@@ -15,3 +15,5 @@ src/.vs/*
 /src/MyShop.sln.DotSettings.user
 /MyShop.UnitTest/bin/Debug/net8.0
 /MyShop.UnitTest/obj
+/MyShop.IntegrationTest/bin/Debug/net8.0
+/MyShop.IntegrationTest/obj

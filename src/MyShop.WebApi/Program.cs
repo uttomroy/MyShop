@@ -5,7 +5,10 @@ using MyShop.Core.Services.FileService;
 using MyShop.Core.Services.TokenHandler;
 using MyShop.Database.Data;
 using Swashbuckle.Extensions;
+using System.Runtime.CompilerServices;
 using TokenHandlerService = MyShop.Core.Services.TokenHandler.TokenHandlerService;
+
+[assembly: InternalsVisibleTo("MyShop.IntegrationTest")]
 
 var builder = WebApplication.CreateBuilder(args);
 
