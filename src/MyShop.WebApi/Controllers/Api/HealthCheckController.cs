@@ -11,6 +11,6 @@ namespace MyShop.WebApi.Controllers.Api
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(bool))]
         [SwaggerOperation(OperationId = "Index")]
-        public IActionResult Index() => Ok();
+        public IActionResult Index() => Ok(); 
     }
 }
