@@ -6,5 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: docker login -u="${{secrets.DOCKER_USERNAME}}" -p="${{secrets.DOCKER_TOKEN}}"
-      - run: ls
-      - run: docker build ./Dockerfile . -t myshop
+      - run: ls ${{ github.workspace }}
+      - run: docker build ${{ github.workspace }}/src/MyShop.WebApi/Dockerfile -t myshop .
