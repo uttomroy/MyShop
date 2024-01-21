@@ -7,4 +7,4 @@ jobs:
     steps:
       - run: docker login -u="${{secrets.DOCKER_USERNAME}}" -p="${{secrets.DOCKER_TOKEN}}"
       - run: ls ${{ github.workspace }}
-      - run: docker build ${{ github.workspace }}/src/MyShop.WebApi/Dockerfile -t myshop .
+      - run: docker build -f ${{ github.workspace }}/src/MyShop.WebApi/Dockerfile -t myshop .
