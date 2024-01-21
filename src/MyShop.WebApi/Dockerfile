@@ -6,6 +6,7 @@ EXPOSE 5034
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["MyShop.WebApi/MyShop.WebApi.csproj", "./MyShop.WebApi/"]
+COPY ["MyShop.WebApi/MyShop.Database.csproj", "./MyShop.Database/"]
 COPY ["MyShop.Core/MyShop.Core.csproj", "./MyShop.Core/"]
 RUN dotnet restore "MyShop.WebApi/MyShop.WebApi.csproj"
 COPY . .
