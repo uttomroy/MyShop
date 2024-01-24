@@ -4,6 +4,9 @@ on: [push]
 jobs:
   clientside-build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/myshop.clientside
     steps:
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -11,7 +14,6 @@ jobs:
           node-version: 19
       - name: checkout
         uses: actions/checkout@v4
-      - run: cd ${{ github.workspace }}/src/myshop.clientside
       - run: npm install
       - run: npm build
       
