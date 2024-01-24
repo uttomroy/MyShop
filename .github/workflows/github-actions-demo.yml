@@ -9,4 +9,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - run: ls
-      - run: docker build -f ${{ github.workspace }}/src/MyShop.WebApi/Dockerfile -t myshop ${{ github.workspace }}/src
+      - run: docker build -f ${{ github.workspace }}/src/MyShop.WebApi/Dockerfile -t uttomroyict21/myshop:1.0.1 ${{ github.workspace }}/src
+      - run: docker push uttomroyict21/myshop:1.0.1
