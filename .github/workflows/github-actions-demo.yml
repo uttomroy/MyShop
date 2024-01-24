@@ -11,6 +11,7 @@ jobs:
           node-version: 19
       - name: checkout
         uses: actions/checkout@v4
+      - run: cd ${{ github.workspace }}/src/myshop.clientside
       - run: npm install
       - run: npm build
       
