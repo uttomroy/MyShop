@@ -13,7 +13,7 @@ const Header = () => {
                 </Typography>
                 <Stack direction={'row'} sx={{marginLeft: 'auto'}} spacing={2}>
                     <Button href='/Login' variant="contained" >Login</Button>
-                    <Button variant="contained" >Signup</Button>
+                    <Button href='/Signup' variant="contained" >Signup</Button>
                 </Stack>
 
             </Toolbar>
