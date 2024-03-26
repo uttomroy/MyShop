@@ -44,8 +44,6 @@ namespace MyShop.WebApi.Controllers.Api
             }
             else
             {
-                // Handle the case where _students is null
-                // Return an appropriate error response
                 return StatusCode(500, "Internal Server Error: _students is null");
             }
         }
