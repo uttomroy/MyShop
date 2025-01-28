@@ -41,13 +41,18 @@ namespace MyShop.WebApi.Controllers
         }
 
         [HttpPost("Login")]
-        //[SwaggerOperation(OperationId = "BookingLayout")]
-        public async Task<IActionResult> Login(User user)
+        public async Task<IActionResult> Login(string userName, string userPassword)
         {
-            var token = await _tokenHandler.GetToken();
-            HttpContext.Response.Cookies.Append("token", token.JWT, new CookieOptions(){ HttpOnly = true, MaxAge = new TimeSpan(365, 0, 0, 0) });
-            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions() { HttpOnly = true, MaxAge = new TimeSpan(365, 0, 0, 0) });
-            return Ok();
+            // need to check user is valid
+            var token = _tokenHandler.GenerateAccessToken(new User()
+            {
+                UserId = 1,
+                UserName = "test user",
+                Role = 11,
+                OrgId = 12
+            });
+            HttpContext.Response.Cookies.Append("token", token, new CookieOptions(){ HttpOnly = true, MaxAge = new TimeSpan(365, 0, 0, 0) });
+            return Ok(token);
         }
     }
 }

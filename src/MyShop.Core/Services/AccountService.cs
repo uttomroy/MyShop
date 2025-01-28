@@ -16,7 +16,7 @@ namespace MyShop.Core.Services
     {
         public async Task VerifyUserCredential(User user)
         {
-
+            
         }
     }
 }

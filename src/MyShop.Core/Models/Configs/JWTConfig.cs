@@ -9,10 +9,8 @@ namespace MyShop.Core.Models.Configs
     public class JWTConfig
     {
         public const string Name = "JWTConfig";
-
-        public string Issuer { get; set; }
-        public string Audience { get; set; }
         public string AccessTokenKey { get; set; }
-        public string RefreshTokenKey { get; set; }
+        
+        public int TokenExpirationInMin { get; set; }
     }
 }

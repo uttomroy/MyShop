@@ -5,6 +5,7 @@ using MyShop.Core.Models.Configs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using MyShop.WebApi.Models;
 
 namespace MyShop.Core.Services.TokenHandler
 {
@@ -16,112 +17,62 @@ namespace MyShop.Core.Services.TokenHandler
             _jwtConfig = jwtConfig.Value;
         }
 
-        public async Task<Token> GetToken()
+        public string GenerateAccessToken(User user)
         {
-            return new Token()
+            return GenerateToken(user);
+        }
+        
+        public JwtStatus VerifyToken(string token)
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.AccessTokenKey));
+            
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                JWT = GetAccessToken(),
-                RefreshToken = GetRreshToken()
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = key
             };
-        }
-
-        public Task<bool> IsTokenExpired(string token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsValidToken(string token, string key)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
-                tokenHandler.ValidateToken(token, GetValidationParameters(key), out _);
+                var tokenHandler = new JwtSecurityTokenHandler();
+                tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken validatedToken);
+                if (validatedToken is JwtSecurityToken jwtToken)
+                {
+                    var algorithm = jwtToken.Header.Alg;
+                    if (algorithm != SecurityAlgorithms.HmacSha256)
+                    {
+                        throw new SecurityTokenException("Invalid token signing algorithm.");
+                    }
+                }
+                return JwtStatus.Valid;
+            }
+            catch (SecurityTokenExpiredException ex)
+            {
+                return JwtStatus.Expired;
             }
             catch (Exception ex)
             {
-                return false;
+                return JwtStatus.Invalid;
             }
-
-            return true;
         }
 
-        public  async Task<Token> RenewToken(string refreshToken)
+        private string GenerateToken(User user)
         {
-            if (!IsValidToken(refreshToken, _jwtConfig.RefreshTokenKey))
-            {
-
-                return null;
-            }
-
-            return new Token()
-            {
-                JWT = GetAccessToken(),
-                RefreshToken = GetRreshToken()
-            };
-
-        }
-
-        private TokenValidationParameters GetValidationParameters(string key)
-        {
-            return new TokenValidationParameters()
-            {
-                ValidateLifetime = true,
-                ValidateAudience = true,
-                ValidateIssuer = true,
-                ValidIssuer = _jwtConfig.Issuer,
-                ValidAudience = _jwtConfig.Audience,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
-            };
-        }
-
-        private string GetAccessToken()
-        {
-            var issuer = _jwtConfig.Issuer;
-            var audience = _jwtConfig.Audience;
             var key = Encoding.ASCII.GetBytes
                 (_jwtConfig.AccessTokenKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Id", Guid.NewGuid().ToString()),
-                    new Claim(JwtRegisteredClaimNames.Sub, "Pradip"),
-                    new Claim(JwtRegisteredClaimNames.Email, "pradip@gmail.com"),
+                    new Claim(JwtRegisteredClaimNames.Sub, user.UserId .ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti,
                         Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.Role, "Admin")
+                    new Claim(ClaimTypes.Role, user.Role.ToString()),
+                    new Claim("OrgId", user.OrgId.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
-                Issuer = issuer,
-                Audience = audience,
-                SigningCredentials = new SigningCredentials
-                (new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha512Signature)
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var stringToken = tokenHandler.WriteToken(token);
-            return stringToken;
-        }
-
-        private string GetRreshToken()
-        {
-            var issuer = _jwtConfig.Issuer;
-            var audience = _jwtConfig.Audience;
-            var key = Encoding.ASCII.GetBytes
-                (_jwtConfig.RefreshTokenKey);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim("Id", Guid.NewGuid().ToString()),
-                    new Claim(JwtRegisteredClaimNames.Sub, "Pradip"),
-                    new Claim(JwtRegisteredClaimNames.Jti,
-                        Guid.NewGuid().ToString()),
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
-                Issuer = issuer,
-                Audience = audience,
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfig.TokenExpirationInMin),
                 SigningCredentials = new SigningCredentials
                 (new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha512Signature)
