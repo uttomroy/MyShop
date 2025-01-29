@@ -6,6 +6,8 @@ using MyShop.Core.Services.TokenHandler;
 using MyShop.Database.Data;
 using Swashbuckle.Extensions;
 using System.Runtime.CompilerServices;
+using MyShop.Core.Repositories;
+using MyShop.Core.Services;
 using TokenHandlerService = MyShop.Core.Services.TokenHandler.TokenHandlerService;
 
 [assembly: InternalsVisibleTo("MyShop.IntegrationTest")]
@@ -32,7 +34,10 @@ builder.Services.AddSingleton<IIndexFileService, IndexFileService>();
 builder.Services.AddDbContext<MyShopDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyShopDbConnection"));
-});
+}, ServiceLifetime.Singleton);
+
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IUserService, UserService>();
 
 var app = builder.Build();
 

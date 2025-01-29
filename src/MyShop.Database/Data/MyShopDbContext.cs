@@ -11,6 +11,8 @@ namespace MyShop.Database.Data
         }
 
         public DbSet<Organization> Organization { get; set; }
-
+        
+        public DbSet<User> User { get; set; }
+        
     }
 }

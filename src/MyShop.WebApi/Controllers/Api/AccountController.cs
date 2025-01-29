@@ -2,13 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MyShop.WebApi.Models;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MyShop.Core.Attributes;
 using MyShop.Core.Services.TokenHandler;
 using MyShop.Database.Data;
 using TokenHandler = MyShop.Core.Services.TokenHandler.TokenHandlerService;
